@@ -4,7 +4,8 @@ from flask_mysqldb import MySQL
 from flask import jsonify
 import yaml
 
-app = Flask(__name__)
+# access image with url /static/file_name.jpg
+app = Flask(__name__, static_folder='gambar')
 
 db = yaml.load(open('db.yaml'))
 app.config['MYSQL_HOST'] = db['mysql_host']
