@@ -21,6 +21,14 @@ def padi():
     if result > 0:
         varietas = cur.fetchall()
         return jsonify({'data': varietas}, 200)
+ 
+@app.route('/padi/<padi_id>', methods=['GET'])
+def padi_by_id(padi_id):
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM padis where id = %s", padi_id)
+    if result > 0:
+        varietas = cur.fetchone()
+        return jsonify({'data': varietas}, 200)
   
 
 @app.route('/pupuk', methods=['GET'])
